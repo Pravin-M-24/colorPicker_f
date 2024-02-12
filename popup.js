@@ -11,7 +11,7 @@ btn.addEventListener('click', async () => {
     chrome.scripting.executeScript(
         {
             target: { tabId: tab.id },
-            function: pickColor,
+            function: pickColor
         },
         async (injectionResults) => {
             const [data] = injectionResults;
@@ -19,11 +19,12 @@ btn.addEventListener('click', async () => {
                 const color = data.result.sRGBHex;
                 colorGrid.style.backgroundColor = color;
                 colorValue.innerText = color;
-                try {
+               try {
                     await navigator.clipboard.writeText(color);
-                } catch (err) {
-                    console.error(err);
                 }
+                 catch (err) {
+                    console.error(err);
+                } 
             }
         }
     );
